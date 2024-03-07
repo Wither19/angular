@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.js" integrity="sha512-klc+qN5PPscoGxSzFpetVsCr9sryi2e2vHwZKq43FdFyhSAa7vAqog/Ifl8tzg/8mBZiG2MAKhyjH5oPJp65EA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <style>
+      .square {
+        background: black;
+      }
+
+      pre * {
+        font-size: 16px;
+      }
+
+      input[type],
+      select,
+      select * {
+        font-size: 18px;
+        text-transform: capitalize;
+        text-align: center;
+      }
+
+    </style>
+
+  </head>
+
+  <body ng-app="" ng-init='color1="red"; color2="blue"; rot="0"; size="3"; percent1="0"; percent2="100";'>
+    <center>
+      <h1>First Color</h1>
+      <input type="text" placeholder="Hex, RGB or HTML" ng-model="color1">
+      <input type="color" value="{{ color1 }}" ng-model="color1">
+      <input type="number" value="0" min="0" max="100" placeholder="Starting" ng-model="percent1"> %
+      <br>
+      <h1>Second Color</h1>
+      <input type="text" placeholder="Hex, RGB or HTML" ng-model="color2">
+      <input type="color" value="{{ color2 }}" ng-model="color2">
+      <input type="number" value="100" min="0" max="100" placeholder="Starting" ng-model="percent2"> %
+      <br>
+      <h1>Rotation</h1>
+      <input type="number" min="0" max="359" placeholder="Degrees" ng-model="rot">
+      <select ng-model="rot">
+        <option value="90">To Right</option>
+        <option value="270">To Left</option>
+        <option value="180">To Bottom</option>
+        <option value="0">To Top</option>
+        <option value="135">Diagonal 1</option>
+        <option value="225">Diagonal 2</option>
+        <option value="315">Diagonal 3</option>
+        <option value="45">Diagonal 4</option>
+      </select>
+      <br>
+      <br>
+      <br>
+      <div class="square" style="background: linear-gradient({{ rot }}deg, {{ color1 }} {{ percent1 }}%, {{ color2 }} {{ percent2 }}%); width: {{ size * 2 }}em; height: {{ size * 2 }}em;"></div>
+      <h1>Preview Size</h1>
+      <input type="number" ng-model="size" min="1" max="8" value="3">
+      <h1>CSS</h1>
+      <pre>
+	  <code>
+	  background: linear-gradient({{ rot }}deg, {{ color1 }} {{ percent1 }}%, {{ color2 }} {{ percent2 }}%)
+	  </code>
+	  </pre>
+    </center>
+  </body>
+
+</html>
